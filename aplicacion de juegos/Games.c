@@ -1,14 +1,15 @@
 #include<stdio.h>
 #include <stdlib.h>
-#include <time.h>
+
 
 
 
 void menu(){
  int Juego;
+
  printf("Bienvenido a diversiti \n");
  printf("menu principal \n");
- printf("para jugar triki presione 1\npara jugar preguntas de cultura presione 2\npara jugar aprendiendo presione 3\n");
+ printf("para jugar triki presione 1\npara jugar preguntas de cultura presione 2\npara jugar aprendiendo presione 3\npara salir del programa presione 0\n");
  scanf("%d", &Juego);
 
  if (Juego==1 )
@@ -25,6 +26,14 @@ void menu(){
  {
      printf("aprendiendo\n");
     suma();
+ }
+ if(Juego==0){
+     printf("saliendo\n");
+     exit;
+ }
+ else {
+     printf("dijite un numero valido\n");
+     menu();
  }
 }
 int puntos[5];
@@ -127,19 +136,18 @@ int puntos[5];
         printf("incorrecto");
         puntos[4]=-2;
         puntos[5]= puntos[0]+puntos[1]+puntos[2]+puntos[3]+puntos[4];
-        printf("su puntuacion final es de %d",puntos[5]);
+        printf("su puntuacion final es de %d\n",puntos[5]);
         retorno();
         }
     }
 
-
-void mulriplicar(){
-    srand(time(NULL)); 
+int PuntajeTwo[3];
+void multiplicar(){
+srand(time(NULL)); 
 
 int test = rand() % 11;
 int testOne = rand() % 11;
 int resultado;
-int puntaje;
 printf("ahora vamos con la multiplicacion\n");
 printf ("sus numeros a multiplicar son: %dx%d\n",test,testOne);
 printf("dijite su respuesta \n");
@@ -148,13 +156,17 @@ scanf("%d",&resultado);
 if (resultado == test*testOne)
 {
     printf("correcto\n ganaste 2 puntos\n");
-    puntaje=6;
-    printf("su puntaje es %d \n", puntaje);
+    PuntajeTwo[2]=2;
+    PuntajeTwo[3]=PuntajeTwo[0]+PuntajeTwo[1]+PuntajeTwo[2];
+    printf("su puntaje es %d \n", PuntajeTwo[3]);
     retorno();
 }
 else{
     printf("incorrecto\n tienes 0 puntos ");
-    mulriplicar();
+    PuntajeTwo[2]=0;
+    PuntajeTwo[3]=PuntajeTwo[0]+PuntajeTwo[1]+PuntajeTwo[2];
+    printf("su puntaje es %d \n", PuntajeTwo[3]);
+    retorno();
 }
 }
 void resta(){
@@ -163,7 +175,6 @@ srand(time(NULL));
 int test = rand() % 11;
 int testOne = rand() % 11;
 int resultado;
-int puntaje;
 printf("ahora vamos con la resta\n");
 printf ("sus numeros a restar son: %d-%d\n",test,testOne);
 printf("dijite su respuesta \n");
@@ -172,12 +183,13 @@ scanf("%d",&resultado);
 if (resultado == test-testOne)
 {
     printf("correcto\nganaste 2 puntos\n");
-   
-    mulriplicar();
+   PuntajeTwo[1]=2;
+    multiplicar();
 }
 else{
     printf("incorrecto\n tienes 0 puntos\n ");
-    resta();
+    PuntajeTwo[1]=0;
+    multiplicar();
 }
 }
 int suma() {
@@ -186,19 +198,20 @@ srand(time(NULL));
 int test = rand() % 11;
 int testOne = rand() % 11;
 int resultado;
-int puntaje;
 printf ("sus numeros a sumar son: %d+%d\n",test,testOne);
 printf("dijite su respuesta \n");
 scanf("%d",&resultado);
 
 if (resultado == test+testOne)
 {
-    printf("correcto\n ganaste 2 puntos");
+    printf("correcto\n ganaste 2 puntos\n");
+    PuntajeTwo[0]=2;
     resta();
 }
 else{
-    printf("incorrecto\n tienes 0 puntos ");
-    suma();
+    printf("incorrecto\n tienes 0 puntos\n ");
+    PuntajeTwo[0]=0;
+    resta();
 }
 return 0;
 }
@@ -219,3 +232,6 @@ int retorno(){
 int main (){
  menu();
     return 0;
+}
+  
+
