@@ -5,7 +5,7 @@ void menu()
 {
     int Juego;
 
-    printf("Bienvenido a diversiti \n");
+    printf("Bienvenido\nvamos a divertirnos un rato \n");
     printf("menu principal \n");
     printf("para jugar piedra papel o tijeras presione 1\npara jugar preguntas de cultura presione 2\npara jugar aprendiendo presione 3\npara salir del programa presione 0\n");
     scanf("%d", &Juego);
@@ -15,17 +15,17 @@ void menu()
         printf("Piedra papel o tijeras\n");
         azar();
     }
-    if (Juego == 2)
+    else if (Juego == 2)
     {
         printf("preguntas de cultura\n");
         primeraPregunta();
     }
-    if (Juego == 3)
+    else if (Juego == 3)
     {
         printf("aprendiendo\n");
         suma();
     }
-    if (Juego == 0)
+    else if (Juego == 0)
     {
         printf("saliendo\n");
         exit;
@@ -39,10 +39,8 @@ void menu()
 void azar()
 {
     srand(time(NULL));
-    
 
     printf("Vamos a jugar piedra,papel o tijeras\ndescubre si puedes ganarle a la maquina\n");
-    printf("Para ello tienes que conseguir mas de 3 puntos en el global\n");
     printf("0=papel\n1=tijera\n2=piedra\n");
     printf("elije si quieres papel,tijera o piedra\n");
     for (size_t i = 0; i < 5; i++)
@@ -55,17 +53,14 @@ void azar()
         if (jugador == 0 && aleatorio == 0 || jugador == 1 && aleatorio == 1 || jugador == 2 && aleatorio == 2)
         {
             printf("empate\n");
-            
         }
         else if (jugador == 0 && aleatorio == 1 || jugador == 1 && aleatorio == 2 || jugador == 2 && aleatorio == 0)
         {
             printf("pierdes\n");
-            
         }
         else if (jugador == 0 && aleatorio == 2 || jugador == 1 && aleatorio == 0 || jugador == 2 && aleatorio == 1)
         {
             printf("ganaste\n");
-            
         }
         else
         {
@@ -82,7 +77,7 @@ void primeraPregunta()
 {
     char respuesta;
 
-    printf("vamos a poner aprueva tus conocimientos\n");
+    printf("vamos a poner aprueba tus conocimientos\n");
     printf("%cCual es el rio mas largo del mundo?\na:Rio nilo\nb:Rio amazonas\nc:Rio amarillo\nd:Rio orinoco\n", 168);
     printf("dijite su respuesta\n");
     scanf("%c", &respuesta);
@@ -143,7 +138,7 @@ void terceraPregunta()
     }
     else
     {
-        printf("incorrecto");
+        printf("incorrecto\n");
         printf("siguiente pregunta\n");
         puntos[2] = 0;
         cuartaPregunta();
@@ -166,7 +161,7 @@ void cuartaPregunta()
     }
     else
     {
-        printf("incorrecto");
+        printf("incorrecto\n");
         puntos[3] = 0;
         quintaPregunta();
     }
@@ -189,7 +184,7 @@ void quintaPregunta()
     }
     else
     {
-        printf("incorrecto");
+        printf("incorrecto\n");
         puntos[4] = -2;
         puntos[5] = puntos[0] + puntos[1] + puntos[2] + puntos[3] + puntos[4];
         printf("su puntuacion final es de %d\n", puntos[5]);
@@ -220,7 +215,7 @@ void multiplicar()
     }
     else
     {
-        printf("incorrecto\n tienes 0 puntos ");
+        printf("incorrecto\n tienes 0 puntos\n ");
         PuntajeTwo[2] = 0;
         PuntajeTwo[3] = PuntajeTwo[0] + PuntajeTwo[1] + PuntajeTwo[2];
         printf("su puntaje es %d \n", PuntajeTwo[3]);
@@ -286,7 +281,6 @@ int retorno()
     if (opcion == 1)
     {
         menu();
-
     }
     return 0;
 }
@@ -295,4 +289,6 @@ int main()
     menu();
     return 0;
 }
+
+   
 
